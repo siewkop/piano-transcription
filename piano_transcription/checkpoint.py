@@ -27,3 +27,30 @@ def load_model(path: Path, device: torch.device) -> PianoModel:
     model = PianoModel(Config.from_dict(checkpoint["config"]))
     model.load_state_dict(checkpoint["model"])
     return model.to(device).eval()
+
+
+def save_checkpoint(
+    path: Path,
+    model: PianoModel,
+    optimizer,
+    scheduler,
+    epoch: int,
+    global_step: int,
+    best_loss: float,
+):
+    checkpoint = {
+        "format_version": 1,
+        "states": list(STATE_NAMES),
+        "config": model.config.to_dict(),
+        "model": model.state_dict(),
+        "optimizer": optimizer.state_dict(),
+        "scheduler": scheduler.state_dict(),
+        "epoch": epoch,
+        "global_step": global_step,
+        "best_loss": best_loss,
+        "torch_rng": torch.get_rng_state(),
+        "cuda_rng": torch.cuda.get_rng_state_all() if torch.cuda.is_available() else [],
+    }
+    temporary = path.with_suffix(".tmp")
+    torch.save(checkpoint, temporary)
+    temporary.replace(path)
