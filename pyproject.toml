@@ -13,6 +13,7 @@ dependencies = [
     "numpy>=1.26,<3",
     "scipy>=1.12,<2",
     "soundfile>=0.12,<1",
+    "mido>=1.2,<2",
     "pretty-midi>=0.2.10,<1",
 ]
 
