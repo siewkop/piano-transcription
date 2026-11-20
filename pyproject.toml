@@ -15,7 +15,14 @@ dependencies = [
     "soundfile>=0.12,<1",
     "mido>=1.2,<2",
     "pretty-midi>=0.2.10,<1",
+    "partitura>=1.6,<2",
 ]
 
+[project.optional-dependencies]
+dev = ["pytest>=8"]
+
 [tool.setuptools.packages.find]
-include = ["piano_transcription*"]
+include = ["piano_transcription*", "score_follower*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
