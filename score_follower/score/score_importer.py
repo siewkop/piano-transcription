@@ -15,7 +15,6 @@ from ..domain import ScoreDocument, ScoreEvent
 
 
 class ScoreImportError(Exception):
-    ## TO DO: some kind of log message like: Coudn't import the score
     pass
 
 

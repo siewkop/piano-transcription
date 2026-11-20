@@ -4,7 +4,7 @@ from pathlib import Path
 
 import pytest
 
-from score_follower.score.importer import ScoreImporter, ScoreImportError
+from score_follower.score.score_importer import ScoreImporter, ScoreImportError
 
 RESOURCES = Path(__file__).resolve().parents[1] / "resources"
 TYPES = {1: "eighth", 2: "quarter", 4: "half", 8: "whole"}

@@ -17,3 +17,13 @@ class ScoreDocument:
     music_xml: str
     part_id: str
     events: tuple[ScoreEvent, ...]
+
+@dataclass(frozen=True)
+class NoteEvent:
+    pitch: int
+    onset_sec: float
+
+@dataclass(frozen=True)
+class TranscriptionStep:
+    notes: tuple[NoteEvent, ...]
+    processed_until_sec: float
