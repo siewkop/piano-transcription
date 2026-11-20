@@ -26,3 +26,5 @@ include = ["piano_transcription*", "score_follower*"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+addopts = "-v"
+filterwarnings = ["ignore::DeprecationWarning:lark.*"]
